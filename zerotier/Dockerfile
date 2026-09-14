@@ -34,6 +34,7 @@ RUN \
     && git clone --branch "${ZERONSD_VERSION}" --depth=1 \
         https://github.com/zerotier/zeronsd.git /tmp/zeronsd \
     && cd /tmp/zeronsd \
+    && cargo update -p getrandom --precise 0.2.16 \
     && RUSTFMT=/usr/bin/rustfmt cargo build --release --locked \
     && install -m 0755 target/release/zeronsd /usr/bin/zeronsd \
     \
