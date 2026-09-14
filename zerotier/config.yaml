@@ -1,6 +1,6 @@
 ---
 name: ZeroTier One with zeronsd
-version: 0.26.2-zeronsd.1
+version: dev
 slug: zerotier
 description: Radically simplify your network with a virtual networking layer and DNS for ZeroTier members
 url: https://github.com/airtonix/app-zerotier
