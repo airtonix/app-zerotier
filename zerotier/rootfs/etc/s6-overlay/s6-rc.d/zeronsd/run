@@ -54,14 +54,14 @@ chmod 600 /run/zeronsd/central-token
 bashio::log.info "Waiting for ZeroTier network ${network}..."
 for _ in {1..60}; do
     if zerotier-cli listnetworks 2>/dev/null \
-        | awk -v network="${network}" '$1 == network && $0 ~ /(^| )OK( |$)/ { found=1 } END { exit !found }'; then
+        | awk -v network="${network}" '$3 == network && $0 ~ /(^| )OK( |$)/ { found=1 } END { exit !found }'; then
         break
     fi
     sleep 2
 done
 
 if ! zerotier-cli listnetworks 2>/dev/null \
-    | awk -v network="${network}" '$1 == network && $0 ~ /(^| )OK( |$)/ { found=1 } END { exit !found }'; then
+    | awk -v network="${network}" '$3 == network && $0 ~ /(^| )OK( |$)/ { found=1 } END { exit !found }'; then
     bashio::exit.nok "ZeroTier network ${network} did not become ready"
 fi
 
